@@ -1,0 +1,29 @@
+source:
+  source: CSV
+  resource: Customer.csv
+  skipRows: 1
+  headerRow: 0
+  fields:
+    - name: cust_id
+      map: cust_id
+    - name: first_name
+      map: first_name
+    - name: last_name
+      map: last_name
+    - name: email_id
+      map: email
+    - name: gender
+      map: gender
+    - name: D.O.B
+
+manipulations:
+  - modifier: Set
+    fieldNames: email_id
+    value: 'some@some.com'
+
+target:
+  type: Database
+  url: mysql://root:lampardpandey@localhost:3306/Theatre_System
+  table: Customer
+  createTable: true
+  replaceTable: true

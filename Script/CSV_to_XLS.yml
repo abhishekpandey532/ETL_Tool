@@ -1,0 +1,26 @@
+source:
+  source: CSV
+  resource: Movie.csv
+  skipRows: 1
+  headerRow: 0
+  fields:
+    - name: movie_id
+    - name: title
+    - name: director
+    - name: cast
+    - name: description
+    - name: duration
+    - name: language
+      transforms:
+        - transform: ReplaceByRegexp
+          regexp: '(?:s|Somali)'
+          to: 'Somalian'
+    - name: genre
+    - name: cost
+
+target:
+  type: XLS
+  resource: Output.xls
+  sheetName: Somesheet
+  replaceFile: false
+  truncateSheet: false

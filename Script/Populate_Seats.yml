@@ -1,0 +1,19 @@
+source:
+  source: CSV
+  resource: Seats.csv
+  skipRows: 1
+  headerRow: 0
+  fields:
+     - name: seat_id
+     - name: row_number
+     - name: column_number
+     - name: auditorium_id
+     - name: price
+     - name: number_of_seats
+
+target:
+  type: Database
+  url: mysql://root:lampardpandey@localhost:3306/Theatre_System
+  table: Seats
+  createTable: true
+  replaceTable: true

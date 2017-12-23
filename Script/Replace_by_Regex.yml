@@ -1,0 +1,30 @@
+source:
+  source: Database
+  url: mysql://root:lampardpandey@localhost:3306/Test
+  table: test_2
+  fields:
+    - name: Country Code
+    - name: Name
+    - name: Type
+      transforms:
+        - transform: Title
+    - name: Gender
+      transforms:
+        - transform: Map
+          values:
+            M: Male
+            F: Female
+    - name: Population
+      transforms:
+        - transform: ReplaceByRegexp
+          #If value is between 0-999
+          regexp: '^([0-9]|[1-9][0-9]|[1-9][0-9][0-9])$'
+          to: '999'
+    - name: name_and_type
+
+target:
+  type: Database
+  url: mysql://root:lampardpandey@localhost:3306/Test
+  table: test_4
+  createTable: true
+  replaceTable: true

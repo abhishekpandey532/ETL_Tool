@@ -1,0 +1,29 @@
+source:
+  source: Database
+  url: mysql://root:lampardpandey@localhost:3306/Theatre_System
+  table: Customer
+  fields:
+    - name: cust_id
+      map: cust_id
+    - name: first_name
+      map: first_name
+    - name: last_name
+      map: last_name
+    - name: email_id
+      map: email
+    - name: gender
+      map: gender
+    - name: D.O.B
+    - name: Full_Name
+
+manipulations:
+  - modifier: Set
+    fieldNames: Full_Name
+    value: '%(first_name)s - %(last_name)s'
+
+target:
+  type: Database
+  url: mysql://root:lampardpandey@localhost:3306/Theatre_System
+  table: Customer_1
+  createTable: true
+  replaceTable: true

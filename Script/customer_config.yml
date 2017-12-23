@@ -1,0 +1,27 @@
+source:
+  fields:
+  - map: first_name
+    name: first_name
+    type: String
+  - map: last_name
+    name: last_name
+    type: String
+  - map: email_id
+    name: email_id
+    type: String
+  - map: gender
+    name: gender
+    type: String
+  - map: cust_id
+    name: cust_id
+    type: Integer
+  - map: D.O.B
+    name: D.O.B
+    type: DateTime
+  headerRow: '0'
+  resource: Customer.csv
+  skipRows: '1'
+  source: CSV
+target:
+  silence: false
+  type: Static

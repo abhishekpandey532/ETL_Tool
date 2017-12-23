@@ -1,0 +1,22 @@
+source:
+  source: Database
+  url: mysql://root:lampardpandey@localhost:3306/Theatre_System
+  table: Seats
+  fields:
+     - name: seat_id
+     - name: row_number
+     - name: column_number
+     - name: auditorium_id
+     - name: price
+     - name: number_of_seats
+       transforms:
+        - transform: Add
+          number: 100
+       type: Integer
+
+target:
+  type: Database
+  url: mysql://root:lampardpandey@localhost:3306/Theatre_System
+  table: Seats_2
+  createTable: true
+  replaceTable: true

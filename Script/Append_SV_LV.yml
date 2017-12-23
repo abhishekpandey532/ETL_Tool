@@ -1,0 +1,36 @@
+source:
+  source: Database
+  url: mysql://root:lampardpandey@localhost:3306/Test
+  table: test_2
+  fields:
+    - name: Country Code
+      transforms:
+        - transform: Map
+          values:
+            SK: Slovakia
+            HU: Hungary
+            CZ: Czech Republic
+            PL: Poland
+    - name: Name
+    - name: Type
+      transforms:
+        - transform: Title
+    - name: Gender
+    - name: Population
+      transforms:
+        - transform: Add
+          number: 100
+      type: Integer
+    - name: name_and_type
+
+manipulations:
+  - modifier: Set
+    fieldNames: name_and_type
+    value: '%(Name)s - SV LV'
+
+target:
+  type: Database
+  url: mysql://root:lampardpandey@localhost:3306/Test
+  table: test_4
+  createTable: true
+  replaceTable: true
